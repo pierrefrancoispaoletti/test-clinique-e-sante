@@ -19,6 +19,13 @@ const ChartElement = ({ chartType = "doughnut" }) => {
     datas && (
       <div>
         <canvas id={id} width="400" height="400"></canvas>
+        {/* <ul style={{ backgroundColor: "black" }}>
+          {scores.map(({ name, color, score }, index) => (
+            <li style={{ color: color[index] }}>
+              {name} = {score} %
+            </li>
+          ))}
+        </ul> */}
         <div>{`Score Global : ${globalScore} %`}</div>
       </div>
     )

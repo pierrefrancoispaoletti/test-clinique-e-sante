@@ -22,6 +22,7 @@ export const useCreateGraph = (scores, elementId, chartType) => {
             backgroundColor,
             borderColor: "black",
             data,
+            hoverOffset: 40,
           },
         ],
       },
