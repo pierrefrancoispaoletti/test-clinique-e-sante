@@ -6,6 +6,13 @@ import { getGlobalScore, scoreCalculator } from "../../utils/scoreCalculator";
 const ChartElement = ({ chartType = "doughnut" }) => {
   const scores = scoreCalculator(datas);
   const globalScore = getGlobalScore(datas);
+
+  // ici on prépare les variables intermediaires necessaires au graph
+  // en les extrayant des scores utilisateurs
+  const labels = scores.map(({ name }) => name);
+  const backgroundColor = scores.map(({ color }, index) => color[index]);
+  const data = scores.map(({ score }) => score);
+
   useEffect(() => {
     // ici on cible l'element canvas necessaire pour injecter le grahique
     const canvas = document
@@ -16,13 +23,13 @@ const ChartElement = ({ chartType = "doughnut" }) => {
     new Chart(canvas, {
       type: chartType,
       data: {
-        labels: scores.map(({ name }) => name),
+        labels,
         datasets: [
           {
             label: "Resultats",
-            backgroundColor: scores.map(({ color }, index) => color[index]),
+            backgroundColor,
             borderColor: "black",
-            data: scores.map(({ score }) => score),
+            data,
           },
         ],
       },

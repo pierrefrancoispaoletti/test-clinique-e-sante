@@ -45,7 +45,8 @@ export const scoreCalculator = (datas) => {
 
 export const getGlobalScore = (datas) => {
   const scores = scoreCalculator(datas);
-  return scores
+  const globalScore = scores
     .reduce((acc, amt) => acc + amt.score / scores.length, 0)
     .toFixed(0);
+  return globalScore;
 };
