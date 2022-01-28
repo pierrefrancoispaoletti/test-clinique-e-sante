@@ -1,7 +1,7 @@
 import Chart from "chart.js/auto";
 import { useEffect } from "react";
 
-export const useCreateGraph = (scores, chartType) => {
+export const useCreateGraph = (scores, elementId, chartType) => {
   useEffect(() => {
     // ici on prépare les variables intermediaires necessaires au graph
     // en les extrayant des scores utilisateurs
@@ -9,9 +9,7 @@ export const useCreateGraph = (scores, chartType) => {
     const backgroundColor = scores.map(({ color }, index) => color[index]);
     const data = scores.map(({ score }) => score);
     // ici on cible l'element canvas necessaire pour injecter le grahique
-    const canvas = document
-      .getElementById(`canvas-${chartType}`)
-      .getContext("2d");
+    const canvas = document.getElementById(elementId).getContext("2d");
 
     // ici on crée le graphique en recupérant les valeurs necessaires
     new Chart(canvas, {
@@ -28,5 +26,5 @@ export const useCreateGraph = (scores, chartType) => {
         ],
       },
     });
-  }, [chartType, scores]);
+  }, [chartType, elementId, scores]);
 };
