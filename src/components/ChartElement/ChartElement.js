@@ -1,9 +1,8 @@
 import React from "react";
 import { useCreateGraph } from "../../customHooks/useCreateGraph";
-import { datas } from "../../data";
 import { getGlobalScore, scoreCalculator } from "../../utils/scoreCalculator";
 
-const ChartElement = ({ chartType = "doughnut" }) => {
+const ChartElement = ({ datas, chartType = "doughnut" }) => {
   const scores = scoreCalculator(datas);
   const globalScore = getGlobalScore(datas);
 
